@@ -1,0 +1,5 @@
+res.data.name
+res.data.types[0].type.name
+res.data.id
+res.data.sprites.other.["official-artwork"].front_default
+res.data.sprites.other.dream_world.front_default
