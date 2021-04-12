@@ -21,5 +21,14 @@
 }
 
 .title h1 {
-  margin: 5px;
+  margin: 15px;
+}
+
+@media (max-width: 500px) {
+  .title {
+    background: #f00000;
+    padding: 5px;
+    text-align: center;
+    border-bottom: 5px solid black;
+  }
 }
