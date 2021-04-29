@@ -35,14 +35,14 @@ const PokemonCard = ({pokemon}) => {
 
   useEffect(() => {
     axios.get(pokemon.url)
-      .then (res => {
-      setPicture(res.data.sprites.other['official-artwork'].front_default);
-      setName(capitalize(res.data.name));
-      setType(res.data.types.map(t => capitalize(t.type.name)));
-      setID('#' + res.data.id);
-      setBackgroundColor(typeColors[type[0]]);
+      .then(res => {
+        setPicture(res.data.sprites.other['official-artwork'].front_default);
+        setName(capitalize(res.data.name));
+        setType(res.data.types.map(t => capitalize(t.type.name)));
+        setID('#' + res.data.id);
+        setBackgroundColor(typeColors[type[0]]);
+      })
     })
-  })
 
   const capitalize = (string) => { 
     return string.charAt(0).toUpperCase() + string.slice(1);

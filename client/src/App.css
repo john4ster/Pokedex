@@ -13,15 +13,39 @@
   color: #f0f0f0;
 }
 
-.title {
+.topBar {
   background: #f00000;
   padding: 5px;
-  text-align: left;
   border-bottom: 5px solid black;
 }
 
-.title h1 {
+.title {
   margin: 15px;
+  text-decoration: underline;
+}
+
+.generationTitle {
+  margin-bottom: 0px;
+}
+
+.generationButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.generationButtons button {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #909090
+}
+
+.generationButtons button:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {
@@ -29,6 +53,5 @@
     background: #f00000;
     padding: 5px;
     text-align: center;
-    border-bottom: 5px solid black;
   }
 }
