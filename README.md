@@ -1,5 +1,5 @@
 # Pokedex
-Pokedex web app using PokeAPI that displays data on species of pokemon.
+Pokedex web app using PokeAPI that displays data on species of pokemon. The user can filter pokemon by generation.
 
 # How To Run
 * Type "npm run dev" in the folder's directory
