@@ -1,36 +1,68 @@
 const fetch = require('node-fetch');
 
 class Cache {
-  data = {};
+  data = {}; //Object that will hold each pokemon's name and url
+  //Cache all pokemon initially
   async initCache() {
-    const API_URL = "https://pokeapi.co/api/v2/pokemon"
+    const API_URL = "https://pokeapi.co/api/v2/pokemon";
 
-    //Fire off a single request to get the amount of pokemon on the PokeAPI.
-    const limitResponse = await fetch(API_URL + "?limit=1");
-    const { count } = await limitResponse.json();
-    
-    // Fetch URLs for all Pokemon
-    const resultsResponse = await fetch(API_URL + "?limit=" + count);
+    //Fetch all pokemon from the API
+    const resultsResponse = await fetch(API_URL + "?limit=898");
     const { results } = await resultsResponse.json();
 
-    // Create a promise for each request
-    const reqs = results.map(e => fetch(e.url).then(resp => resp.json()));
-    const allResults = await Promise.all(reqs);
-
-    allResults.forEach(pokemon => {
+    //Put each pokemon in the cache
+    results.forEach(pokemon => {
       this.put(pokemon.name, pokemon);
-      console.log(pokemon.name, "added to cache")
+      console.log(pokemon.name + " added to cache");
     })
   }
-  put(key, data) {
-    this.data[key] = data;
+
+  //Put a pokemon's name and url in the cache
+  put(key, pokemonData) {
+    this.data[key] = pokemonData;
   }
+
   getAll() {
     return this.data;
   }
+
   get(key) {
     return this.data[key];
   }
+
+  //Get pokemon by generation from the cache
+  getGen1() {
+    return Object.values(this.data).slice(0, 151);
+  }
+
+  getGen2() {
+    return Object.values(this.data).slice(151, 251);
+  }
+
+  getGen3() {
+    return Object.values(this.data).slice(251, 386);
+  }
+
+  getGen4() {
+    return Object.values(this.data).slice(386, 493);
+  }
+
+  getGen5() {
+    return Object.values(this.data).slice(493, 649);
+  }
+
+  getGen6() {
+    return Object.values(this.data).slice(649, 721);
+  }
+
+  getGen7() {
+    return Object.values(this.data).slice(721, 809);
+  }
+
+  getGen8() {
+    return Object.values(this.data).slice(809, 898);
+  }
+
 }
 
-export default Cache = new Cache();
+module.exports = new Cache();

@@ -1,5 +1,5 @@
 # Pokedex
-Pokedex web app using PokeAPI that displays data on the original 151 pokemon.
+Pokedex web app using PokeAPI that displays data on species of pokemon.
 
 # How To Run
 * Type "npm run dev" in the folder's directory

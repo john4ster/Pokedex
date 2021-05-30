@@ -15,7 +15,7 @@ const PokemonList = ({generation}) => {
   useEffect(() => { 
     axios.get(endPoint)
     .then(res => {
-      setPokemon(res.data.results);
+      setPokemon(Object.values(res.data));
     })
   }, [generation]);
 
