@@ -33,16 +33,22 @@ const PokemonCard = ({pokemon}) => {
   const [id, setID] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('');
 
+  const endPoint = '/api/pokemon/individualData';
+
   useEffect(() => {
-    axios.get(pokemon.url)
+    axios.get(endPoint, {params: {name: pokemon.name} })
       .then(res => {
+        //Set data of each pokemon
         setPicture(res.data.sprites.other['official-artwork'].front_default);
         setName(capitalize(res.data.name));
         setType(res.data.types.map(t => capitalize(t.type.name)));
         setID('#' + res.data.id);
-        setBackgroundColor(typeColors[type[0]]);
+        //Set the background color of each pokemon
+        const type = res.data.types[0].type.name;
+        const bgColor = typeColors[capitalize(type)];
+        setBackgroundColor(bgColor);
       })
-    })
+    }, [pokemon.name])
 
   const capitalize = (string) => { 
     return string.charAt(0).toUpperCase() + string.slice(1);

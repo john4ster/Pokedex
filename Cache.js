@@ -1,7 +1,8 @@
 const fetch = require('node-fetch');
 
 class Cache {
-  data = {}; //Object that will hold each pokemon's name and url
+  basicData = {}; //Object that will hold each pokemon's name and url
+  individualData = {}; //Object that will hold each pokemon's individual data
   //Cache all pokemon initially
   async initCache() {
     const API_URL = "https://pokeapi.co/api/v2/pokemon";
@@ -12,55 +13,69 @@ class Cache {
 
     //Put each pokemon in the cache
     results.forEach(pokemon => {
-      this.put(pokemon.name, pokemon);
-      console.log(pokemon.name + " added to cache");
+      this.putBasicData(pokemon.name, pokemon);
     })
+
+    //Put each pokemon's individual data into the cache
+    //Fetch each pokemon's url
+    const individualPokemonDataResponse = await Promise.all(Object.values(this.basicData).map(pokemon => {
+      return fetch(pokemon.url).then(res => res.json())
+    }))
+    const individualPokemonData = await individualPokemonDataResponse;
+
+    //Add each pokemon's individual data into the individualData cache
+    individualPokemonData.forEach(pokemon => {
+      this.putIndividualData(pokemon.name, pokemon)
+    })
+
   }
 
   //Put a pokemon's name and url in the cache
-  put(key, pokemonData) {
-    this.data[key] = pokemonData;
+  putBasicData(key, pokemonData) {
+    this.basicData[key] = pokemonData;
   }
 
-  getAll() {
-    return this.data;
+  //Put a pokemon's individual data in the cache
+  putIndividualData(key, individualData) {
+    this.individualData[key] = individualData;
   }
 
-  get(key) {
-    return this.data[key];
+  //Get each pokemon's individual data
+  getIndividualData(key) {
+    return this.individualData[key];
   }
 
   //Get pokemon by generation from the cache
   getGen1() {
-    return Object.values(this.data).slice(0, 151);
+    return Object.values(this.basicData).slice(0, 151);
   }
 
   getGen2() {
-    return Object.values(this.data).slice(151, 251);
+    return Object.values(this.basicData).slice(151, 251);
   }
 
   getGen3() {
-    return Object.values(this.data).slice(251, 386);
+    return Object.values(this.basicData).slice(251, 386);
   }
 
   getGen4() {
-    return Object.values(this.data).slice(386, 493);
+    return Object.values(this.basicData).slice(386, 493);
   }
 
   getGen5() {
-    return Object.values(this.data).slice(493, 649);
+    return Object.values(this.basicData).slice(493, 649);
   }
 
   getGen6() {
-    return Object.values(this.data).slice(649, 721);
+    return Object.values(this.basicData).slice(649, 721);
   }
 
   getGen7() {
-    return Object.values(this.data).slice(721, 809);
+    return Object.values(this.basicData).slice(721, 809);
   }
 
   getGen8() {
-    return Object.values(this.data).slice(809, 898);
+    return Object.values(this.basicData).slice(809, 898);
   }
 
 }

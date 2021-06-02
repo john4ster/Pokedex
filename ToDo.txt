@@ -1,2 +1,0 @@
-Pull data from cache instead of api in pokemon card component
-Add more in detail info on pokemon when you click them

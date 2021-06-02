@@ -5,8 +5,13 @@ const cache = require('./Cache');
 //Get all pokemon and cache them
 cache.initCache();
 
-//There should be eight caches, one for each generation
+//Endpoint to get a pokemon's individual data
+app.get('/api/pokemon/individualData', (req, res) => {
+  let pokemonName = req.query.name;
+  res.send(cache.getIndividualData(pokemonName));
+})
 
+//Endpoints to get each generation
 app.get('/api/pokemon/generation/1', (req, res) => {
   res.send(cache.getGen1());
 })
