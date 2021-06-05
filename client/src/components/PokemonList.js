@@ -7,23 +7,24 @@ import './PokemonList.css';
 //The list of cards to be generated
 const PokemonList = ({generation}) => {
 
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState([]); //List of pokemon to display 
 
   let endPoint = '/api/pokemon/generation/' + generation;
-  console.log(endPoint);
 
   useEffect(() => { 
     axios.get(endPoint)
     .then(res => {
       setPokemon(Object.values(res.data));
     })
-  }, [generation]);
+  }, [generation, endPoint]);
 
   return (
-    <div className='list'>
-      {pokemon.map(p => ( //For each pokemon, make a card with that pokemon's info
-        <PokemonCard key={p.name} pokemon={p}/> 
-      ))}
+    <div>
+      <div className='list'>
+        {pokemon.map(p => ( //For each pokemon, make a card with that pokemon's info
+          <PokemonCard key={p.name} pokemon={p}/> 
+        ))}
+      </div>
     </div>
   )
 }

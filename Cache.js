@@ -1,8 +1,11 @@
 const fetch = require('node-fetch');
 
+// The cache is used to make one request to the api for all the necessary data when the server starts and stores that data. After this, all requests for data are supplied by this cache rather than the api to avoid making too many api requests.
+
 class Cache {
   basicData = {}; //Object that will hold each pokemon's name and url
-  individualData = {}; //Object that will hold each pokemon's individual data
+  individualData = {}; //Object that will hold each pokemon's individual data such as types and stats
+
   //Cache all pokemon initially
   async initCache() {
     const API_URL = "https://pokeapi.co/api/v2/pokemon";

@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PokemonCard.css';
+import DetailsModal from './DetailsModal';
+import Modal from 'react-modal';
 
 //Different type colors for different types of pokemon to determine their background color
 const typeColors = {
@@ -27,19 +29,24 @@ const typeColors = {
 
 const PokemonCard = ({pokemon}) => {
 
+  const [pokemonData, setPokemonData] = useState();
   const [picture, setPicture] = useState();
   const [name, setName] = useState('');
   const [type, setType] = useState(['']);
   const [id, setID] = useState('');
   const [backgroundColor, setBackgroundColor] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const endPoint = '/api/pokemon/individualData';
+  const pokemonDataEndPoint = '/api/pokemon/individualData';
 
   useEffect(() => {
-    axios.get(endPoint, {params: {name: pokemon.name} })
+    axios.get(pokemonDataEndPoint, {params: {name: pokemon.name} })
       .then(res => {
         //Set data of each pokemon
-        setPicture(res.data.sprites.other['official-artwork'].front_default);
+        setPokemonData(res.data);
+        if (typeof res.data.sprites.other['official-artwork'].front_default !== undefined) {
+          setPicture(res.data.sprites.other['official-artwork'].front_default);
+        }
         setName(capitalize(res.data.name));
         setType(res.data.types.map(t => capitalize(t.type.name)));
         setID('#' + res.data.id);
@@ -48,7 +55,7 @@ const PokemonCard = ({pokemon}) => {
         const bgColor = typeColors[capitalize(type)];
         setBackgroundColor(bgColor);
       })
-    }, [pokemon.name])
+    }, [pokemon])
 
   const capitalize = (string) => { 
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -56,12 +63,20 @@ const PokemonCard = ({pokemon}) => {
 
   return (
     <div className='card' style={{backgroundColor}}>
-      <span><img className='picture' src={picture} alt={name + ' Picture'}></img></span>
-      <h3 className='name'>{name}</h3>
-      <div className='types'>
-        {type.map(typeString => <p className='type' key={typeString}>{typeString}</p>)}
+      <div onClick={() => setModalOpen(true)}>
+        <span><img className='picture' src={picture} alt={name + ' Picture'}></img></span>
+        <h3 className='pokemonName'>{name}</h3>
+        <div className='types'>
+          {type.map(typeString => <p className='type' key={typeString}>{typeString}</p>)}
+        </div>
+        <div className='id'>{id}</div>
       </div>
-      <div className='id'>{id}</div>
+      <div className='modal'>
+        <Modal isOpen={modalOpen} className='detailModal' appElement={this}>
+          <p className='closeButton' onClick={() => setModalOpen(false)}>+</p>
+          <DetailsModal pokemonData={pokemonData} backgroundColor={backgroundColor}/>
+        </Modal>
+      </div>
     </div>
   )
 }
