@@ -49,37 +49,50 @@ class Cache {
   }
 
   //Get pokemon by generation from the cache
-  getGen1() {
-    return Object.values(this.basicData).slice(0, 151);
+  getGen(genNum) {
+    switch(genNum) {
+      case 1: return Object.values(this.basicData).slice(0, 151);
+      case 2: return Object.values(this.basicData).slice(151, 251);
+      case 3: return Object.values(this.basicData).slice(251, 386);
+      case 4: return Object.values(this.basicData).slice(386, 493);
+      case 5: return Object.values(this.basicData).slice(493, 649);
+      case 6: return Object.values(this.basicData).slice(649, 721);
+      case 7: return Object.values(this.basicData).slice(721, 809);
+      case 8: return Object.values(this.basicData).slice(809, 898);
+    } 
   }
 
-  getGen2() {
-    return Object.values(this.basicData).slice(151, 251);
-  }
+  // getGen1() {
+  //   return Object.values(this.basicData).slice(0, 151);
+  // }
 
-  getGen3() {
-    return Object.values(this.basicData).slice(251, 386);
-  }
+  // getGen2() {
+  //   return Object.values(this.basicData).slice(151, 251);
+  // }
 
-  getGen4() {
-    return Object.values(this.basicData).slice(386, 493);
-  }
+  // getGen3() {
+  //   return Object.values(this.basicData).slice(251, 386);
+  // }
 
-  getGen5() {
-    return Object.values(this.basicData).slice(493, 649);
-  }
+  // getGen4() {
+  //   return Object.values(this.basicData).slice(386, 493);
+  // }
 
-  getGen6() {
-    return Object.values(this.basicData).slice(649, 721);
-  }
+  // getGen5() {
+  //   return Object.values(this.basicData).slice(493, 649);
+  // }
 
-  getGen7() {
-    return Object.values(this.basicData).slice(721, 809);
-  }
+  // getGen6() {
+  //   return Object.values(this.basicData).slice(649, 721);
+  // }
 
-  getGen8() {
-    return Object.values(this.basicData).slice(809, 898);
-  }
+  // getGen7() {
+  //   return Object.values(this.basicData).slice(721, 809);
+  // }
+
+  // getGen8() {
+  //   return Object.values(this.basicData).slice(809, 898);
+  // }
 
 }
 

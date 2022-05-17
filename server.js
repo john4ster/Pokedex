@@ -13,35 +13,35 @@ app.get('/api/pokemon/individualData', (req, res) => {
 
 //Endpoints to get each generation
 app.get('/api/pokemon/generation/1', (req, res) => {
-  res.send(cache.getGen1());
+  res.send(cache.getGen(1));
 })
 
 app.get('/api/pokemon/generation/2', (req, res) => {
-  res.send(cache.getGen2());
+  res.send(cache.getGen(2));
 })
 
 app.get('/api/pokemon/generation/3', (req, res) => {
-  res.send(cache.getGen3());
+  res.send(cache.getGen(3));
 })
 
 app.get('/api/pokemon/generation/4', (req, res) => {
-  res.send(cache.getGen4());
+  res.send(cache.getGen(4));
 })
 
 app.get('/api/pokemon/generation/5', (req, res) => {
-  res.send(cache.getGen5());
+  res.send(cache.getGen(5));
 })
 
 app.get('/api/pokemon/generation/6', (req, res) => {
-  res.send(cache.getGen6());
+  res.send(cache.getGen(6));
 })
 
 app.get('/api/pokemon/generation/7', (req, res) => {
-  res.send(cache.getGen7());
+  res.send(cache.getGen(7));
 })
 
 app.get('/api/pokemon/generation/8', (req, res) => {
-  res.send(cache.getGen8());
+  res.send(cache.getGen(8));
 })
 
 const port = 5000;

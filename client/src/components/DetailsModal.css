@@ -1,6 +1,6 @@
 .modal {
   display:flex;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
 }
 
@@ -15,9 +15,9 @@
 }
 
 .statDetails {
-  margin:auto;
+  margin: auto;
   margin-top: 45px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 15px;
   background-color: rgba(255,255,255,0.5);
   user-select: none;
