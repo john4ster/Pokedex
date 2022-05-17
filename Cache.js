@@ -63,38 +63,6 @@ class Cache {
     } 
   }
 
-  // getGen1() {
-  //   return Object.values(this.basicData).slice(0, 151);
-  // }
-
-  // getGen2() {
-  //   return Object.values(this.basicData).slice(151, 251);
-  // }
-
-  // getGen3() {
-  //   return Object.values(this.basicData).slice(251, 386);
-  // }
-
-  // getGen4() {
-  //   return Object.values(this.basicData).slice(386, 493);
-  // }
-
-  // getGen5() {
-  //   return Object.values(this.basicData).slice(493, 649);
-  // }
-
-  // getGen6() {
-  //   return Object.values(this.basicData).slice(649, 721);
-  // }
-
-  // getGen7() {
-  //   return Object.values(this.basicData).slice(721, 809);
-  // }
-
-  // getGen8() {
-  //   return Object.values(this.basicData).slice(809, 898);
-  // }
-
 }
 
 module.exports = new Cache();
