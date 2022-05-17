@@ -1,5 +1,5 @@
 # Pokedex
-Pokedex web app using PokeAPI that displays data on species of pokemon. The user can click on each pokemon to get information about it's stats, and the pokemon are filtered by generation (includes generations 1-8).
+Pokedex web app using PokeAPI that displays data on species of pokemon. The user can click on each pokemon to get information about its stats, and the pokemon are filtered by generation (includes generations 1-8).
 
 # Screenshots
 
