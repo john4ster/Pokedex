@@ -16,6 +16,9 @@ const PokemonList = ({generation}) => {
     .then(res => {
       setPokemon(Object.values(res.data));
     })
+    .catch(err => {
+      console.log(err);
+    });
   }, [generation, endPoint]);
 
   return (

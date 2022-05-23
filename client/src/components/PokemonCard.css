@@ -53,7 +53,7 @@
 .closeButton {
   position: absolute;
   top: 120px;
-  right: 625px;
+  right: 860px;
   font-size: 60px;
   font-weight: bold;
   transform: rotate(45deg);
@@ -96,7 +96,7 @@ span {
   .closeButton {
     position: absolute;
     top: 120px;
-    right: 50px;
+    right: 0%;
     font-size: 60px;
     font-weight: bold;
     transform: rotate(45deg);
