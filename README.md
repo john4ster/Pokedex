@@ -18,4 +18,4 @@ This application uses a custom server side cache, which pulls all the data from 
 # Technologies Used
 * HTML, CSS, JavaScript
 * ReactJS
-* API: PokeAPI
+* API: [PokeAPI](https://pokeapi.co/)
